@@ -1,0 +1,91 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = "Currency Converter" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">Currency converter</h1>
+    <p class="govuk-body-l">Enter an amount to see live conversions across major currencies.</p>
+
+    <div class="govuk-form-group" id="amount-group">
+      <label class="govuk-label govuk-label--m" for="home-currency">
+        Home currency
+      </label>
+      <div class="govuk-input__wrapper">
+        <select class="govuk-select" id="home-currency" name="home-currency" aria-label="Select home currency">
+          <option value="GBP" selected>GBP – British Pound</option>
+          <option value="USD">USD – US Dollar</option>
+          <option value="EUR">EUR – Euro</option>
+          <option value="JPY">JPY – Japanese Yen</option>
+          <option value="CAD">CAD – Canadian Dollar</option>
+          <option value="AUD">AUD – Australian Dollar</option>
+          <option value="CHF">CHF – Swiss Franc</option>
+          <option value="CNY">CNY – Chinese Yuan</option>
+          <option value="INR">INR – Indian Rupee</option>
+          <option value="MXN">MXN – Mexican Peso</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="govuk-form-group" id="amount-group">
+      <label class="govuk-label govuk-label--m" for="amount">
+        Amount
+      </label>
+      <div class="govuk-input__wrapper">
+        <div class="govuk-input__prefix" aria-hidden="true" id="currency-symbol">£</div>
+        <input
+          class="govuk-input govuk-input--width-10"
+          id="amount"
+          name="amount"
+          type="number"
+          min="0"
+          step="any"
+          placeholder="0.00"
+          autocomplete="off"
+        >
+      </div>
+    </div>
+
+    <div id="results" class="govuk-!-margin-top-6" hidden>
+      <h2 class="govuk-heading-m">Converted amounts</h2>
+      <p class="govuk-hint" id="rate-note"></p>
+      <table class="govuk-table">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Currency</th>
+            <th scope="col" class="govuk-table__header govuk-table__header--numeric">Amount</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body" id="results-body">
+        </tbody>
+      </table>
+    </div>
+
+    <div id="error-banner" class="govuk-error-summary" hidden aria-labelledby="error-title" role="alert">
+      <h2 class="govuk-error-summary__title" id="error-title">There is a problem</h2>
+      <div class="govuk-error-summary__body">
+        <p class="govuk-body" id="error-message"></p>
+      </div>
+    </div>
+
+    <details class="govuk-details govuk-!-margin-top-6">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">About these rates</span>
+      </summary>
+      <div class="govuk-details__text">
+        <p class="govuk-body">Exchange rates are fetched live from the <a href="https://www.frankfurter.app" class="govuk-link" rel="noopener noreferrer" target="_blank">Frankfurter API</a>, which sources data from the European Central Bank. Rates are updated on business days.</p>
+        <p class="govuk-body">This is a prototype for demonstration purposes only. Do not use for financial decisions.</p>
+      </div>
+    </details>
+
+  </div>
+</div>
+
+{% endblock %}
+
+{% block pageScripts %}
+<script src="/public/javascripts/currency-converter.js"></script>
+{% endblock %}

@@ -1,0 +1,9 @@
+{
+  "serviceName": "Currency Converter",
+  "useServiceNavigation": true,
+  "plugins": {
+    "govuk-frontend": {
+      "rebrand": true
+    }
+  }
+}
