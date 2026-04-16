@@ -4,3 +4,53 @@
 // 
 
 // Add extra styles here
+
+// Chart canvas
+#fx-chart {
+  max-width: 100%;
+  margin-top: 1rem;
+}
+
+// Print styles
+@media print {
+  .no-print,
+  .govuk-header,
+  .govuk-footer,
+  .govuk-phase-banner,
+  nav,
+  .govuk-back-link,
+  .govuk-button {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  body {
+    font-size: 12pt;
+  }
+
+  .govuk-heading-xl {
+    font-size: 20pt;
+  }
+
+  .govuk-summary-list__key {
+    width: 40%;
+  }
+
+  .print-footer {
+    margin-top: 2rem;
+    border-top: 1px solid #b1b4b6;
+    padding-top: 0.5rem;
+    font-size: 9pt;
+    color: #505a5f;
+  }
+}
+
+@media screen {
+  .print-only {
+    display: none;
+  }
+}
+

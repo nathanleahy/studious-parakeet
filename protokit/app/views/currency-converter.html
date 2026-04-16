@@ -10,27 +10,25 @@
     <h1 class="govuk-heading-xl">Currency converter</h1>
     <p class="govuk-body-l">Enter an amount to see live conversions across major currencies.</p>
 
-    <div class="govuk-form-group" id="amount-group">
+    <div class="govuk-form-group">
       <label class="govuk-label govuk-label--m" for="home-currency">
         Home currency
       </label>
-      <div class="govuk-input__wrapper">
-        <select class="govuk-select" id="home-currency" name="home-currency" aria-label="Select home currency">
-          <option value="GBP" selected>GBP – British Pound</option>
-          <option value="USD">USD – US Dollar</option>
-          <option value="EUR">EUR – Euro</option>
-          <option value="JPY">JPY – Japanese Yen</option>
-          <option value="CAD">CAD – Canadian Dollar</option>
-          <option value="AUD">AUD – Australian Dollar</option>
-          <option value="CHF">CHF – Swiss Franc</option>
-          <option value="CNY">CNY – Chinese Yuan</option>
-          <option value="INR">INR – Indian Rupee</option>
-          <option value="MXN">MXN – Mexican Peso</option>
-        </select>
-      </div>
+      <select class="govuk-select" id="home-currency" name="home-currency" aria-label="Select home currency">
+        <option value="GBP" selected>GBP – British Pound</option>
+        <option value="USD">USD – US Dollar</option>
+        <option value="EUR">EUR – Euro</option>
+        <option value="JPY">JPY – Japanese Yen</option>
+        <option value="CAD">CAD – Canadian Dollar</option>
+        <option value="AUD">AUD – Australian Dollar</option>
+        <option value="CHF">CHF – Swiss Franc</option>
+        <option value="CNY">CNY – Chinese Yuan</option>
+        <option value="INR">INR – Indian Rupee</option>
+        <option value="MXN">MXN – Mexican Peso</option>
+      </select>
     </div>
 
-    <div class="govuk-form-group" id="amount-group">
+    <div class="govuk-form-group">
       <label class="govuk-label govuk-label--m" for="amount">
         Amount
       </label>
@@ -51,17 +49,32 @@
 
     <div id="results" class="govuk-!-margin-top-6" hidden>
       <h2 class="govuk-heading-m">Converted amounts</h2>
-      <p class="govuk-hint" id="rate-note"></p>
+      <p class="govuk-hint">Select a currency to see a 30-day exchange rate chart.</p>
       <table class="govuk-table">
         <thead class="govuk-table__head">
           <tr class="govuk-table__row">
             <th scope="col" class="govuk-table__header">Currency</th>
             <th scope="col" class="govuk-table__header govuk-table__header--numeric">Amount</th>
+            <th scope="col" class="govuk-table__header govuk-table__header--numeric">Chart</th>
           </tr>
         </thead>
-        <tbody class="govuk-table__body" id="results-body">
-        </tbody>
+        <tbody class="govuk-table__body" id="results-body"></tbody>
       </table>
+
+      <div id="chart-section" hidden>
+        <h2 class="govuk-heading-m" id="chart-title"></h2>
+        <p class="govuk-hint">30-day exchange rate history. Source: European Central Bank.</p>
+        <canvas id="fx-chart" height="120"></canvas>
+        <p class="govuk-!-margin-top-4">
+          <a href="#" class="govuk-link" id="close-chart">Hide chart</a>
+        </p>
+      </div>
+
+      <p class="govuk-hint govuk-!-margin-top-4" id="rate-note"></p>
+
+      <a id="print-link" href="/print" class="govuk-button govuk-button--secondary govuk-!-margin-top-4">
+        Print this conversion
+      </a>
     </div>
 
     <div id="error-banner" class="govuk-error-summary" hidden aria-labelledby="error-title" role="alert">
@@ -87,5 +100,6 @@
 {% endblock %}
 
 {% block pageScripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
 <script src="/public/javascripts/currency-converter.js"></script>
 {% endblock %}

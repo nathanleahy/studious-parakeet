@@ -1,0 +1,79 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = "Print conversion" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full" id="print-area">
+
+    <div class="print-header">
+      <p class="govuk-body-s print-only">HM Government — Currency Converter Service</p>
+    </div>
+
+    <h1 class="govuk-heading-xl">Currency conversion summary</h1>
+
+    <dl class="govuk-summary-list" id="print-summary">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Reference</dt>
+        <dd class="govuk-summary-list__value" id="print-ref">—</dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Date and time</dt>
+        <dd class="govuk-summary-list__value" id="print-date">—</dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Amount entered</dt>
+        <dd class="govuk-summary-list__value" id="print-amount">—</dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Home currency</dt>
+        <dd class="govuk-summary-list__value" id="print-base">—</dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Rate source</dt>
+        <dd class="govuk-summary-list__value">European Central Bank via Frankfurter API</dd>
+      </div>
+    </dl>
+
+    <h2 class="govuk-heading-m govuk-!-margin-top-6">Converted amounts</h2>
+
+    <table class="govuk-table" id="print-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Currency</th>
+          <th scope="col" class="govuk-table__header govuk-table__header--numeric">Rate (1 unit)</th>
+          <th scope="col" class="govuk-table__header govuk-table__header--numeric">Converted amount</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body" id="print-table-body"></tbody>
+    </table>
+
+    <div class="govuk-warning-text govuk-!-margin-top-6 no-print">
+      <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+      <strong class="govuk-warning-text__text">
+        <span class="govuk-visually-hidden">Warning</span>
+        This document is for reference only. Do not use for financial or legal decisions.
+      </strong>
+    </div>
+
+    <p class="govuk-body print-only">This document is for reference only. Do not use for financial or legal decisions.</p>
+
+    <p class="govuk-body-s print-footer print-only">Printed from GOV.UK Currency Converter prototype</p>
+
+  </div>
+</div>
+
+<div class="govuk-grid-row no-print">
+  <div class="govuk-grid-column-two-thirds">
+    <p class="govuk-!-margin-top-4">
+      <a href="/currency-converter" class="govuk-link">← Back to converter</a>
+    </p>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block pageScripts %}
+<script src="/public/javascripts/print-page.js"></script>
+{% endblock %}
