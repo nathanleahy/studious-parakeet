@@ -82,7 +82,7 @@
       return
     }
 
-    fetch('https://api.frankfurter.app/latest?from=' + base)
+    fetch('https://api.frankfurter.dev/v1/latest?from=' + base)
       .then(function (response) {
         if (!response.ok) throw new Error('Could not fetch rates (status ' + response.status + ')')
         return response.json()
